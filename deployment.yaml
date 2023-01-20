@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: petclinic-deployment
+  name: nginx-deployment
   labels:
-    app: petclinic
+    app: nginx
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: petclinic
+      app: nginx
   template:
     metadata:
       labels:
-        app: petclinic
+        app: nginx
     spec:
       containers:
-      - name: petclinic-container1
-        image: gcr.io/raakilabs/petclinic:v1
+      - name: nginx-container1
+        image: gcr.io/raakilabs/nginx:v1
         ports:
         - containerPort: 8080
         
@@ -28,7 +28,7 @@ metadata:
   name: my-service
 spec:
   selector:
-    app: petclinic
+    app: nginx
   ports:
     - protocol: TCP
       port: 8080
